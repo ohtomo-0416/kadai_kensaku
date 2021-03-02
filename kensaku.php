@@ -27,6 +27,38 @@
             </nav>
         </header>
 
+        <section>
+            <h1>検索フォーム</h1>
+
+            <form id="kensaku" action="kekka.php">
+                <dl>
+                    <dt>学籍番号</dt>
+                    <dd><input type="text" name="number" id="number"></dd>
+
+                    <dt>名前</dt>
+                    <dd><input type="text" name="name" id="name"></dd>
+
+                    <dt>進路</dt>
+                    <dd>
+
+                        <select name="sinro" id="sinro">
+
+                            <option value="進学">進学</option>
+                            <option value="就職">就職</option>
+
+                        </select>
+
+                    </dd>
+
+                    <input type="submit" value="検索">
+                    <input type="reset">
+
+
+                </dl>
+
+            </form>
+        </section>
+
         <footer>
             Copyright
         </footer>
@@ -35,6 +67,6 @@
             mysqli_free_result($result);
             mysqli_close($link)
         ?>
-        
+
     </body>
 </html>
