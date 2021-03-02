@@ -30,7 +30,7 @@
         <section>
             <h1>検索フォーム</h1>
 
-            <form id="kensaku" action="kekka.php">
+            <form id="kensaku" method="post" action="kekka.php">
                 <dl>
                     <dt>学籍番号</dt>
                     <dd><input type="text" name="number" id="number"></dd>

@@ -27,6 +27,21 @@
             </nav>
         </header>
 
+        <section>
+
+            <?php
+                $number = $_POST['number'];
+                echo "{$number}";
+
+                $name = $_POST['name'];
+                echo "{$name}";
+
+                $sinro = $_POST['sinro'];
+                echo "{$sinro}";
+            ?>
+
+        </section>
+
         <footer>
             Copyright
         </footer>
@@ -35,6 +50,6 @@
             mysqli_free_result($result);
             mysqli_close($link)
         ?>
-        
+
     </body>
 </html>
