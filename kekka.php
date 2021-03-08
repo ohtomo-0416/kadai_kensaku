@@ -1,9 +1,53 @@
 <?php
-    $link = mysqli_connect("localhost", "root", "", "gakusei");
-    if ($link == null) {
-        die("接続に失敗しました:" . mysqli_connect_error());
-  }
-    mysqli_set_charset($link, "utf8");
+    header("Content-type: text/html; charset=utf-8");
+ 
+    if(empty($_POST)) {
+        header("Location: kensaku.html");
+        exit();
+    }else{
+        //名前入力判定
+        if (!isset($_POST['namae'])  || $_POST['namae'] === "" ){
+            $errors['name'] = "名前が入力されていません。";
+        }
+    }
+     
+    if(count($errors) === 0){
+        
+        $dsn = 'mysql:host=localhost;dbname=sample01;charset=utf8';
+        $user = 'root';
+        $password = '';
+     
+        try{
+            $dbh = new PDO($dsn, $user, $password);
+            $statement = $dbh->prepare("SELECT * FROM 学生表 WHERE 名前 LIKE '%" . $_POST["namae"] . "%' ");
+        
+            if($statement){
+                $yourname = $_POST['yourname'];
+                $like_yourname = "%".$yourname."%";
+                //プレースホルダへ実際の値を設定する
+                $statement->bindValue(':name', $like_yourname, PDO::PARAM_STR);
+                
+                if($statement->execute()){
+                    //レコード件数取得
+                    $row_count = $statement->rowCount();
+                    
+                    while($row = $statement->fetch()){
+                        $rows[] = $row;
+                    }
+                    
+                }else{
+                    $errors['error'] = "検索失敗しました。";
+                }
+                
+                //データベース接続切断
+                $dbh = null;	
+            }
+        
+        }catch (PDOException $e){
+            print('Error:'.$e->getMessage());
+            $errors['error'] = "データベース接続失敗しました。";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,27 +80,27 @@
             <th>進路</th>
             <th>課題</th>
 
-            <?php
-                
-                $sql = "SELECT 学籍番号, 名前, かな, 性別, 進路, 詳細　
-                FROM 学生表, 課題表, 課題詳細表　
-                WHERE 学生表.学籍番号 = 課題表.学籍番号
-                AND 課題表.課題番号 = 課題詳細表.課題番号
-                OR 名前 LIKE '%".$_POST['namae']."%'";
-
-                $result = mysqli_query($link, $sql);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
-                        echo "<td>{$row['学籍番号']}</td>";
-                        echo "<td>{$row['名前']}</td>";
-                        echo "<td>{$row['かな']}</td>";
-                        echo "<td>{$row['性別']}</td>";
-                        echo "<td>{$row['進路']}</td>";
-                        echo "<td>{$row['詳細']}</td>";
-                        echo "</tr>";
-                    } 
-            ?>
+            <?php if (count($errors) === 0): ?>
             
+            <?php 
+                foreach($rows as $row){
+            ?> 
+            <tr> 
+	            <td><?=$row['学籍番号']?></td> 
+	            <td><?=htmlspecialchars($row['名前'],ENT_QUOTES,'UTF-8')?></td>
+                <td><?=htmlspecialchars($row['かな'],ENT_QUOTES,'UTF-8')?></td>
+            </tr> 
+            <?php 
+                } 
+            ?>
+ 
+            <?php elseif(count($errors) > 0): ?>
+            <?php
+                foreach($errors as $value){
+	            echo "<p>".$value."</p>";
+                }
+            ?>
+            <?php endif; ?>
 
         </section>
 
