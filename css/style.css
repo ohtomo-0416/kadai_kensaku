@@ -5,3 +5,16 @@ body {
     padding: 0;
     color: black;
 }
+
+section table {
+    width: 100%;
+    border-collapse: separate;
+}
+section th,
+section td {
+    border: 1px solid black;
+}
+
+section th {
+    background-color: #A2ECF0
+}
