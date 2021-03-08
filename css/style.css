@@ -3,18 +3,5 @@
 body {
     margin: 0;
     padding: 0;
-    color: rebeccapurple;
-}
-
-footer {
-    width: 100%;
-    background-color: black;
-    text-align: center;
-    bottom: 0;
-}
-
-footer small {
-    display: block;
-    padding: 8px 0;
-    color: white;
+    color: black;
 }

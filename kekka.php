@@ -74,10 +74,6 @@
 
         </section>
 
-        <footer>
-            <small>&copy; 2021 A.</small>
-        </footer>
-
         <?php
             mysqli_free_result($result);
             mysqli_close($link)
