@@ -18,7 +18,7 @@
             <nav id="global_navi">
 
                 <ul>
-                    <li class="current"><a href="kensaku.php">検索フォーム</a></li>
+                    <li class="current"><a href="kensaku.html">検索フォーム</a></li>
                     <li><a href="kekka.php">検索結果</a></li>
                 </ul>
 
@@ -44,8 +44,13 @@
                 OR 学籍番号 = '".$POST["number"]."'
                 OR 名前 LIKE '%".$_POST["name"]."%'";
 
-                $result = mysqli_query($link, $sql);
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                $pdo = new PDO('mysql:host=localhost;dbname=gakusei;charset=utf8','root','');
+                $qry = $pdo->prepare($sql);
+                $qry->execute();
+                foreach($qry->fetchALL() as $q);
+
+                foreach($qry->fetchALL() as $row){
+
                     echo "<tr>";
                     echo "<td>{$row['学籍番号']}</td>";
                     echo "<td>{$row['名前']}</td>";

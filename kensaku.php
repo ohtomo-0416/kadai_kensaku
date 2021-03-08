@@ -1,11 +1,3 @@
-<?php
-    $link = mysqli_connect("localhost", "root", "", "gakusei");
-    if ($link == null) {
-        die("接続に失敗しました:" . mysqli_connect_error());
-  }
-    mysqli_set_charset($link, "utf8");
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -18,7 +10,7 @@
             <nav id="global_navi">
 
                 <ul>
-                    <li class="current"><a href="kensaku.php">検索フォーム</a></li>
+                    <li class="current"><a href="kensaku.html">検索フォーム</a></li>
                     <li><a href="kekka.php">検索結果</a></li>
                 </ul>
 
