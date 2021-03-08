@@ -42,11 +42,10 @@
                 FROM 学生表, 課題表, 課題詳細表　
                 WHERE 学生表.学籍番号 = 課題表.学籍番号
                 AND 課題表.課題番号 = 課題詳細表.課題番号
-                OR 学籍番号 = '".$POST['number']."'
-                OR 名前 LIKE '%".$_POST['name']."%'";
+                OR 名前 LIKE '%".$_POST['namae']."%'";
 
                 $result = mysqli_query($link, $sql);
-                    while ($row = mysqli_fetch_array($result)) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
                         echo "<td>{$row['学籍番号']}</td>";
                         echo "<td>{$row['名前']}</td>";
@@ -55,7 +54,7 @@
                         echo "<td>{$row['進路']}</td>";
                         echo "<td>{$row['詳細']}</td>";
                         echo "</tr>";
-                    }
+                    } 
             ?>
             
 
