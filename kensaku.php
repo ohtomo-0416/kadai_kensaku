@@ -18,8 +18,8 @@
             <nav id="global_navi">
 
                 <ul>
-                    <li class="current"><a href="kensaku.html">検索フォーム</a></li>
-                    <li><a href="kekka.html">検索結果</a></li>
+                    <li class="current"><a href="kensaku.php">検索フォーム</a></li>
+                    <li><a href="kekka.php">検索結果</a></li>
                 </ul>
 
             </nav>
