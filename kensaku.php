@@ -18,8 +18,15 @@
             <nav id="global_navi">
 
                 <ul>
+<<<<<<< HEAD
                     <li class="current"><a href="kensaku.html">検索フォーム</a></li>
                     <li><a href="kekka.html">検索結果</a></li>
+=======
+                    <li class="current"><a href="kensaku.php">検索フォーム</a></li>
+                    <li><a href="kekka.php">検索結果</a></li>
+                    <li><a href="touroku.html">登録</a></li>
+                    <li><a href="sakujo.html">削除</a></li>
+>>>>>>> 1c2e74008ad2f6cbc4d18de8f548dc5b285c74c5
                 </ul>
 
             </nav>
@@ -28,7 +35,7 @@
         <section>
             <h1>検索フォーム</h1>
 
-            <form id="kensaku" action="kekka.php">
+            <form id="kensaku" method="post" action="kekka.php">
                 <dl>
                     <dt>学籍番号</dt>
                     <dd><input type="text" name="number" id="number"></dd>
