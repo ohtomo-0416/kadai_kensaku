@@ -1,5 +1,6 @@
 <?php
     header("Content-type: text/html; charset=utf-8");
+    error_reporting(0);
  
     if(empty($_POST)) {
         header("Location: kensaku.html");
@@ -16,7 +17,7 @@
         $user = 'root';
         $password = '';
      
-        $dbh = new PDO($dsn, $user, $password);
+        $pdo = new PDO($dsn, $user, $password);
             if(@$_POST["namae"] != ""){
                 $stmt = $pdo->query("SELECT * FROM 学生表 WHERE 名前 LIKE '%" . $_POST["namae"] . "%' ");
             }
