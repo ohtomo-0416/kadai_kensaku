@@ -20,8 +20,6 @@
                 <ul>
                     <li class="current"><a href="kensaku.php">検索フォーム</a></li>
                     <li><a href="kekka.php">検索結果</a></li>
-                    <li><a href="touroku.html">登録</a></li>
-                    <li><a href="sakujo.html">削除</a></li>
                 </ul>
 
             </nav>
