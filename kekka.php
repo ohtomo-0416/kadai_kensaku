@@ -26,17 +26,37 @@
         </header>
 
         <section>
+            <h2>検索結果</h2>
+            <table>
+
+            <th>学籍番号</th>
+            <th>名前</th>
+            <th>かな</th>
+            <th>性別</th>
+            <th>進路</th>
+            <th>課題</th>
 
             <?php
-                $number = $_POST['number'];
-                echo "{$number}";
+                $sql = "SELECT 学籍番号, 名前, かな, 性別, 進路, 詳細　
+                FROM 学生表, 課題表, 課題詳細表　
+                WHERE 学生表.学籍番号 = 課題表.学籍番号
+                AND 課題表.課題番号 = 課題詳細表.課題番号
+                OR 学籍番号 = '".$POST["number"]."'
+                OR 名前 LIKE '%".$_POST["name"]."%'";
 
-                $name = $_POST['name'];
-                echo "{$name}";
-
-                $sinro = $_POST['sinro'];
-                echo "{$sinro}";
+                $result = mysqli_query($link, $sql);
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo "<tr>";
+                    echo "<td>{$row['学籍番号']}</td>";
+                    echo "<td>{$row['名前']}</td>";
+                    echo "<td>{$row['かな']}</td>";
+                    echo "<td>{$row['性別']}</td>";
+                    echo "<td>{$row['進路']}</td>";
+                    echo "<td>{$row['詳細']}</td>";
+                    echo "</tr>";
+                }
             ?>
+            
 
         </section>
 
