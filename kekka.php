@@ -75,7 +75,7 @@
         </section>
 
         <footer>
-            Copyright
+            <small>&copy; 2021 A.</small>
         </footer>
 
         <?php

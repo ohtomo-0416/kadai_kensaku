@@ -9,7 +9,12 @@ body {
 footer {
     width: 100%;
     background-color: black;
-    color: white;
     text-align: center;
-    padding: 30px 0;
+    bottom: 0;
+}
+
+footer small {
+    display: block;
+    padding: 8px 0;
+    color: white;
 }
