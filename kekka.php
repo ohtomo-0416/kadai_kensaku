@@ -37,29 +37,25 @@
             <th>課題</th>
 
             <?php
+                
                 $sql = "SELECT 学籍番号, 名前, かな, 性別, 進路, 詳細　
                 FROM 学生表, 課題表, 課題詳細表　
                 WHERE 学生表.学籍番号 = 課題表.学籍番号
                 AND 課題表.課題番号 = 課題詳細表.課題番号
-                OR 学籍番号 = '".$POST["number"]."'
-                OR 名前 LIKE '%".$_POST["name"]."%'";
+                OR 学籍番号 = '".$POST['number']."'
+                OR 名前 LIKE '%".$_POST['name']."%'";
 
-                $pdo = new PDO('mysql:host=localhost;dbname=gakusei;charset=utf8','root','');
-                $qry = $pdo->prepare($sql);
-                $qry->execute();
-                foreach($qry->fetchALL() as $q);
-
-                foreach($qry->fetchALL() as $row){
-
-                    echo "<tr>";
-                    echo "<td>{$row['学籍番号']}</td>";
-                    echo "<td>{$row['名前']}</td>";
-                    echo "<td>{$row['かな']}</td>";
-                    echo "<td>{$row['性別']}</td>";
-                    echo "<td>{$row['進路']}</td>";
-                    echo "<td>{$row['詳細']}</td>";
-                    echo "</tr>";
-                }
+                $result = mysqli_query($link, $sql);
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        echo "<td>{$row['学籍番号']}</td>";
+                        echo "<td>{$row['名前']}</td>";
+                        echo "<td>{$row['かな']}</td>";
+                        echo "<td>{$row['性別']}</td>";
+                        echo "<td>{$row['進路']}</td>";
+                        echo "<td>{$row['詳細']}</td>";
+                        echo "</tr>";
+                    }
             ?>
             
 
