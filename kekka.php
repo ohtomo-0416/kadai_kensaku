@@ -12,7 +12,7 @@
     }
      
         
-        $dsn = 'mysql:host=localhost;dbname=sample01;charset=utf8';
+        $dsn = 'mysql:host=localhost;dbname=gakusei;charset=utf8';
         $user = 'root';
         $password = '';
      
