@@ -1,5 +1,5 @@
 <?php
-    $link = mysqli_connect("localhost", "jikkyo", "pass", "jikkyo_pension");
+    $link = mysqli_connect("localhost", "root", "", "gakusei");
     if ($link == null) {
         die("接続に失敗しました:" . mysqli_connect_error());
   }
@@ -18,15 +18,8 @@
             <nav id="global_navi">
 
                 <ul>
-<<<<<<< HEAD
                     <li class="current"><a href="kensaku.html">検索フォーム</a></li>
                     <li><a href="kekka.html">検索結果</a></li>
-=======
-                    <li class="current"><a href="kensaku.php">検索フォーム</a></li>
-                    <li><a href="kekka.php">検索結果</a></li>
-                    <li><a href="touroku.html">登録</a></li>
-                    <li><a href="sakujo.html">削除</a></li>
->>>>>>> 1c2e74008ad2f6cbc4d18de8f548dc5b285c74c5
                 </ul>
 
             </nav>
