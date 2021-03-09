@@ -8,7 +8,10 @@
     }else{
 
         if (!isset($_POST['namae'])  || $_POST['namae'] === "" ){
-            $errors['name'] = "名前が入力されていません。";
+
+            
+            $errors['name'] = "名前と学籍番号が入力されていません。";
+            
         }
     }
      
@@ -18,8 +21,20 @@
         $password = '';
      
         $pdo = new PDO($dsn, $user, $password);
-            if(@$_POST["namae"] != ""){
+
+            if(@$_POST["number"] = ""){
                 $stmt = $pdo->query("SELECT * FROM 学生表 WHERE 名前 LIKE '%" . $_POST["namae"] . "%' ");
+
+                                        if(@$_POST["number"] !=""){
+                                            $stmt = $pdo->query("SELECT * FROM 学生表 WHERE 学籍番号
+                                                                LIKE '%" . $_POST["number"] . "%' ");
+                                        }
+                                    
+            }else{
+                if(@$_POST["number"] !=""){
+                    $stmt = $pdo->query("SELECT * FROM 学生表 WHERE 学籍番号
+                                        LIKE '%" . $_POST["number"] . "%' ");
+                }
             }
         
 ?>
@@ -29,7 +44,7 @@
     <head>
         <meta charset="UTF-8">
         <title>学生情報</title>
-        <link rel="stylesheet" href="C:/xampp/htdocs/kadai_kensaku/css/style.css">
+        <link rel="stylesheet" href="http://localhost/kadai_kensaku/css/style.css">
     </head>
     <body>
         <header>
@@ -53,7 +68,6 @@
                 <th>かな</th>
                 <th>性別</th>
                 <th>進路</th>
-                <th>課題</th>
             </tr>
             
             <tr> 
